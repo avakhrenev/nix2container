@@ -433,7 +433,7 @@ let
       explodedLayers = layersWithNested layers;
       ignore = [configFile]++explodedLayers;
 
-      closureGraphForAllLayers = closureGraph ([configFile] ++ copyToRootList ++ layers) ignore;
+      closureGraphForAllLayers = closureGraph ([configFile] ++ copyToRootList ++ layers) (ignore ++ copyToRootList);
       nixDatabase = makeNixDatabase closureGraphForAllLayers;
       # This layer contains all config dependencies. We ignore the
       # configFile because it is already part of the image, as a
